@@ -13,21 +13,22 @@ import { Button, Icon } from "react-native-elements";
 
 import PageUpperContent from "../Components/PageUpperContent";
 
-function PostBlog() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+function EditBlog({ route }) {
+  const item = route.params;
+  const [title, setTitle] = useState(item.title);
+  const [description, setDescription] = useState("blog");
   const [image, setImage] = useState("upload");
-
   return (
     <ScrollView style={styles.container}>
       <PageUpperContent
         src={require("../../assets/WriteBlog.jpg")}
-        title={"Add Blog"}
+        title={"Edit Blog"}
       />
       <View style={{ marginVertical: "5%" }}>
         <View style={styles.titleContent}>
           <TextInput
             placeholder="Title of Blog"
+            value={title}
             onChangeText={(e) => setTitle(e)}
             style={{ paddingHorizontal: "5%", fontSize: 18 }}
             multiline={true}
@@ -35,6 +36,7 @@ function PostBlog() {
         </View>
         <View style={styles.descriptionContent}>
           <TextInput
+            value={description}
             placeholder="Description of Blog"
             onChangeText={(e) => setDescription(e)}
             style={{
@@ -57,12 +59,11 @@ function PostBlog() {
             }}
           />
         </View>
-        <Button title="Post" buttonStyle={styles.Buttons} />
+        <Button title="Edit" buttonStyle={styles.Buttons} />
       </View>
     </ScrollView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
@@ -110,4 +111,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PostBlog;
+export default EditBlog;

@@ -29,7 +29,7 @@ const InputField = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: "rgba(237, 237, 237,50)",
     width: "85%",
     height: 50,
     flexDirection: "row",
